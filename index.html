@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arun Ramana Balasubramaniam - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 80px 40px;
+            text-align: center;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            color: #555;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .contact-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .project-card {
+            margin-bottom: 45px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .project-title {
+            font-size: 1.5em;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .project-link {
+            color: #667eea;
+            text-decoration: none;
+            padding: 8px 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .project-description {
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+            color: #5a67d8;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .tech-tag:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.15);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .skill-category h3 {
+            font-size: 1.3em;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skill-category li {
+            padding: 6px 0;
+            color: #444;
+            font-size: 1.05em;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skill-category li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1em;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+
+            header {
+                padding: 60px 30px;
+            }
+
+            .section {
+                padding: 30px 25px;
+            }
+
+            .project-header {
+                flex-direction: column;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Arun Ramana Balasubramaniam</h1>
+        <p class="tagline">Computer Science Graduate Student | Full-Stack Developer | Electric Vehicle Technology</p>
+        <div class="contact-links">
+            <a href="mailto:arunr@bu.edu">Email</a>
+            <a href="https://github.com/arunramana" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/arun-ramana-bba507148/" target="_blank">LinkedIn</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>Projects</h2>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">🔗 SafeStake - Decentralized Crowdfunding Platform</h3>
+                    <a href="https://github.com/arunramana/CS595Lab" class="project-link" target="_blank">View on GitHub</a>
+                </div>
+                <p class="project-description">
+                    Built a blockchain-based crowdfunding platform using Solidity smart contracts and React frontend, implementing milestone-gated funding with decentralized governance, Chainlink VRF for random jury selection, and IPFS integration for document storage.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Solidity</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Ethereum</span>
+                    <span class="tech-tag">Chainlink VRF</span>
+                    <span class="tech-tag">IPFS</span>
+                    <span class="tech-tag">OpenZeppelin</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">📊 SPARK ML - Massachusetts Voter Table Language Predictor</h3>
+                </div>
+                <p class="project-description">
+                    Built a Spark ML pipeline to predict voter language preferences from survey data with feature engineering and model validation.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Apache Spark</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Machine Learning</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">⚡ Electric Motor Design Tool</h3>
+                    <a href="https://github.com/arunramana/motor_design_tool" class="project-link" target="_blank">View on GitHub</a>
+                </div>
+                <p class="project-description">
+                    Developed a comprehensive motor design tool using FEMM and Python, hosted on AWS, that enabled custom motor solutions tailor made for any given electric vehicles. Successfully transferred to ZOHO for production use.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">FEMM</span>
+                    <span class="tech-tag">AWS</span>
+                    <span class="tech-tag">Electromagnetic Simulation</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">🎓 PALS Motor Design Course</h3>
+                </div>
+                <p class="project-description">
+                    Designed and taught an online motor design course to engineering students across India, Bangladesh, and Nepal.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Education</span>
+                    <span class="tech-tag">Motor Design</span>
+                    <span class="tech-tag">Online Teaching</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">🔍 DCAF Chrome Extension</h3>
+                    <a href="https://github.com/arunramana/DCAF_extension" class="project-link" target="_blank">View on GitHub</a>
+                </div>
+                <p class="project-description">
+                    Developed a Chrome extension using Gemini API to verify website visits align with user's stated browsing intent.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Chrome Extensions</span>
+                    <span class="tech-tag">Gemini API</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Python, C, C++, Java</li>
+                        <li>JavaScript, Solidity, PHP</li>
+                        <li>Shell Script, R, Ruby</li>
+                        <li>HTML/CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <ul>
+                        <li>Spark ML, TensorFlow, Keras</li>
+                        <li>ReactJS, Flutter</li>
+                        <li>MERN Stack, Django</li>
+                        <li>ethers.js, Web3.js</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Blockchain & Web3</h3>
+                    <ul>
+                        <li>Solidity, Smart Contracts</li>
+                        <li>Ethereum, OpenZeppelin</li>
+                        <li>Chainlink VRF, IPFS</li>
+                        <li>DApp Development</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <ul>
+                        <li>SQL, MySQL</li>
+                        <li>MongoDB</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud & DevOps</h3>
+                    <ul>
+                        <li>AWS (Lambda, S3, EC2, CloudFront)</li>
+                        <li>Docker, Linux, Git</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Specialized Tools</h3>
+                    <ul>
+                        <li>FEMM (Electromagnetic Simulation)</li>
+                        <li>Pandas, NumPy, Requests</li>
+                        <li>Embedded Systems (Arduino, Raspberry Pi)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Arun Ramana Balasubramaniam. All rights reserved.</p>
+    </footer>
+</body>
+</html>
