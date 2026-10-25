@@ -307,6 +307,9 @@
 
         .grid .frame { margin-top: 18px; }
 
+        .frame-image { display: block; background: #fff; }
+        .frame-image img { display: block; width: 100%; height: auto; }
+
         .flow {
             display: flex;
             flex-wrap: wrap;
@@ -569,21 +572,27 @@
                     <h3>PALS Motor Design Course</h3>
                     <div class="sub">Online teaching</div>
                     <p class="desc">
-                        Designed and taught an online motor design course to engineering students across India,
-                        Bangladesh and Nepal.
+                        Designed and taught an online course that shows engineering students from outside computer
+                        science how to combine electromagnetics and electrical engineering with software, using the
+                        FEMM simulation tool. Students go from a motor specification to geometry maths, a CAD drawing
+                        and a flux simulation. Delivered across India, Bangladesh and Nepal.
                     </p>
                     <div class="frame">
-                        <div class="frame-bar"><span class="path">pals / course reach</span></div>
-                        <div class="flow" role="img" aria-label="An online course delivered to students in India, Bangladesh and Nepal">
-                            <span class="node end">Online course</span><span class="arrow" aria-hidden="true">&rarr;</span>
-                            <span class="node">India</span>
-                            <span class="node">Bangladesh</span>
-                            <span class="node">Nepal</span>
+                        <div class="frame-bar">
+                            <span class="path">pals / course deck</span>
+                            <span class="actions">
+                                <a class="btn small" href="https://github.com/arunramana/pals-motor-design-course" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </span>
                         </div>
+                        <a class="frame-image" href="https://github.com/arunramana/pals-motor-design-course" target="_blank" rel="noopener noreferrer" aria-label="Open the PALS Motor Design Course repository">
+                            <img src="assets/pals-title-slide.webp" width="1200" height="676" loading="lazy" alt="Title slide of the Motor Design course: a FEMM magnetic flux plot of the motor designed in the course">
+                        </a>
                     </div>
-                    <div class="caption-soft">Delivered online in three countries</div>
+                    <div class="caption-soft">Title slide of the course deck</div>
                     <ul class="tags">
                         <li>Motor design</li>
+                        <li>FEMM</li>
+                        <li>Interdisciplinary teaching</li>
                         <li>Curriculum design</li>
                         <li>Online teaching</li>
                     </ul>
