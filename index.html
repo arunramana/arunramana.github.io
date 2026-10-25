@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arun Ramana Balasubramaniam | Portfolio</title>
-    <meta name="description" content="Computer Science graduate student building LLM applications, machine learning systems, blockchain platforms and electric motor design software.">
+    <meta name="description" content="Computer Science graduate (M.S., Boston University) building LLM applications, machine learning systems, blockchain platforms and electric motor design software.">
     <meta name="theme-color" content="#0a0e14">
     <meta property="og:title" content="Arun Ramana Balasubramaniam">
     <meta property="og:description" content="Portfolio: electric motor design software, blockchain, machine learning and LLM applications.">
@@ -244,7 +244,7 @@
         }
 
         .featured-copy { flex: 1 1 340px; min-width: 0; }
-        .featured-visual { flex: 1 1 440px; min-width: 0; }
+        .featured-visual { flex: 1 1 440px; min-width: 0; align-self: center; }
 
         .badge {
             display: inline-block;
@@ -306,6 +306,20 @@
         .grid .card { display: flex; flex-direction: column; }
 
         .grid .frame { margin-top: 18px; }
+
+        .points { margin-top: 18px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.6; color: var(--body); }
+        .points li::marker { color: var(--accent); }
+
+        .lanes { padding: 20px 16px 22px; background: linear-gradient(180deg, #0d1522, var(--bg)); font-family: var(--mono); font-size: 12px; color: var(--text-soft); }
+        .lane-label { font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+        .lane { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .lane span.node { padding: 5px 10px; border: 1px solid var(--border-strong); border-radius: 5px; background: var(--bg); }
+        .lane span.node.end { border-color: var(--accent); color: var(--accent); }
+        .lane span.arrow { color: var(--accent); }
+        .lane-bridge { margin: 16px 0; padding: 8px 12px; text-align: center; border: 1px dashed var(--accent); border-radius: 6px; color: var(--accent); background: rgba(79, 209, 197, 0.06); }
+
+        .featured + .featured { margin-top: 0; }
+        .featured .caption-soft { margin-top: 10px; text-align: center; font-size: 12.5px; color: var(--muted); }
 
         .frame-image { display: block; background: #fff; }
         .frame-image img { display: block; width: 100%; height: auto; }
@@ -427,7 +441,7 @@
     <main>
         <div class="wrap hero">
             <div class="hero-copy">
-                <div class="eyebrow">Computer Science, Boston University</div>
+                <div class="eyebrow">M.S. Computer Science, Boston University</div>
                 <h1>Arun Ramana Balasubramaniam</h1>
                 <p>
                     I build software across LLM applications, machine learning, blockchain and engineering simulation.
@@ -449,9 +463,9 @@
             <div class="terminal" aria-label="Profile summary">
                 <div class="terminal-bar"><i></i><i></i><i></i><span>profile.py</span></div>
 <pre><span class="dim">$</span> python profile.py
-<span class="k">role</span>    = "CS graduate student"
+<span class="k">role</span>    = "M.S. in Computer Science"
 <span class="k">focus</span>   = ["LLM apps", "agentic AI", "ML"]
-<span class="k">built</span>   = ["motor design tool", "dApp"]
+<span class="k">built</span>   = ["motor tool", "SafeSpeak", "dApp"]
 <span class="k">shipped</span> = "ZOHO production"
 <span class="k">reach</span>   = "taught in 3 countries"
 <span class="dim">&gt;&gt;&gt;</span> <span class="cursor"></span></pre>
@@ -502,6 +516,62 @@
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
                         scroll to browse
                     </div>
+                </div>
+            </article>
+
+            <article class="card featured" id="safespeak">
+                <div class="featured-copy">
+                    <span class="badge">Featured / Open source at VoiceZero</span>
+                    <h3>SafeSpeak: Anonymous Campus Reporting</h3>
+                    <p class="desc">
+                        I owned the SafeSpeak workstream at VoiceZero. Students file Title IX, bullying, mental health,
+                        housing, academic or general-feedback reports without giving a name, receive a tracking code and
+                        follow their case. Staff triage and reply from a separate portal.
+                    </p>
+                    <ul class="points">
+                        <li>Scoped the product and built the student and staff apps in React and TypeScript.</li>
+                        <li>Connected both to VoiceZero's multi-tenant Supabase backend through edge functions, row-level security and realtime, without forking its ticket pipeline.</li>
+                        <li>Took the submit-to-staff-reply loop from a UI-only prototype to a live backend, and confirmed the student sees the public reply.</li>
+                        <li>Added API smoke tests, staff end-to-end tests with Playwright and setup docs so the team could reproduce the environment.</li>
+                    </ul>
+                    <ul class="tags">
+                        <li>React</li>
+                        <li>TypeScript</li>
+                        <li>Vite</li>
+                        <li>Supabase</li>
+                        <li>Row-level security</li>
+                        <li>Playwright</li>
+                    </ul>
+                </div>
+                <div class="featured-visual">
+                    <div class="frame">
+                        <div class="frame-bar">
+                            <span class="path">safespeak / student and staff loop</span>
+                            <span class="actions">
+                                <a class="btn small primary" href="https://github.com/openefficiency/safespeak" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </span>
+                        </div>
+                        <div class="lanes" role="img" aria-label="Student lane: choose a category, submit anonymously, receive a tracking code, follow the case timeline. Staff lane: inbox, AI triage and notes, status update, public reply. Both lanes share one Supabase backend.">
+                            <div class="lane-label">Student, anonymous</div>
+                            <div class="lane">
+                                <span class="node">Category</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                                <span class="node">Submit</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                                <span class="node">Tracking code</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                                <span class="node end">Case timeline</span>
+                            </div>
+                            <div class="lane-bridge">
+                                <span>Supabase: edge functions, RLS, realtime</span>
+                            </div>
+                            <div class="lane-label">Staff portal</div>
+                            <div class="lane">
+                                <span class="node">Inbox</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                                <span class="node">AI triage + notes</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                                <span class="node">Status</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                                <span class="node end">Public reply</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="caption-soft">Anonymous report to staff reply, on one shared backend</div>
                 </div>
             </article>
 
@@ -649,7 +719,7 @@
                     <h3>languages/</h3>
                     <ul>
                         <li>Python</li>
-                        <li>JavaScript</li>
+                        <li>JavaScript, TypeScript</li>
                         <li>Java, C, C++</li>
                         <li>SQL</li>
                         <li>Solidity</li>
@@ -661,6 +731,8 @@
                         <li>React, MERN</li>
                         <li>Django</li>
                         <li>REST APIs</li>
+                        <li>Supabase (edge functions, RLS)</li>
+                        <li>Playwright testing</li>
                         <li>Chrome extensions</li>
                     </ul>
                 </div>
