@@ -5,443 +5,639 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arun Ramana Balasubramaniam | Portfolio</title>
     <meta name="description" content="Computer Science graduate student building LLM applications, machine learning systems, blockchain platforms and electric motor design software.">
+    <meta name="theme-color" content="#0a0e14">
     <meta property="og:title" content="Arun Ramana Balasubramaniam">
     <meta property="og:description" content="Portfolio: electric motor design software, blockchain, machine learning and LLM applications.">
     <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f6f8fb;
-            --surface: #ffffff;
-            --text: #1a2433;
-            --muted: #5b6678;
-            --border: #e1e7ef;
-            --accent: #1e56b8;
-            --accent-dark: #0f2a4a;
-            --accent-soft: #eaf1fb;
+            --bg: #0a0e14;
+            --surface: #0f1622;
+            --surface-2: #111a28;
+            --chip: #16233a;
+            --border: #1f2a3a;
+            --border-strong: #2c3b50;
+            --text: #e6edf6;
+            --text-soft: #c3d0e0;
+            --muted: #8fa0b5;
+            --body: #a9b8cb;
+            --accent: #4fd1c5;
+            --accent-ink: #04211e;
+            --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: var(--sans);
             line-height: 1.65;
             color: var(--text);
-            background: var(--bg);
+            background-color: var(--bg);
+            background-image:
+                linear-gradient(rgba(79, 209, 197, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(79, 209, 197, 0.05) 1px, transparent 1px);
+            background-size: 48px 48px;
             -webkit-font-smoothing: antialiased;
         }
 
         a { color: var(--accent); }
+        a:hover { color: #8ff0e6; }
 
-        .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
 
-        /* Header */
-        header {
-            background: var(--accent-dark);
-            color: #fff;
-            padding: 72px 0 56px;
+        .eyebrow {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
-        h1 {
-            font-size: 2.6rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            line-height: 1.2;
+        /* Top bar */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(10, 14, 20, 0.88);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
         }
 
-        .role {
-            margin-top: 8px;
-            font-size: 1.1rem;
-            color: #b9cdee;
-            font-weight: 500;
-        }
-
-        .summary {
-            margin-top: 20px;
-            max-width: 720px;
-            color: #dfe8f7;
-            font-size: 1.05rem;
-        }
-
-        .contact {
-            margin-top: 32px;
+        .topbar .wrap {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 12px 24px;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 14px;
+            padding-bottom: 14px;
+        }
+
+        .brand {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--muted);
+            display: flex;
+            gap: 8px;
             align-items: center;
         }
 
+        .brand::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .nav { display: flex; gap: 24px; font-size: 14px; font-weight: 500; }
+        .nav a { color: var(--text-soft); text-decoration: none; }
+        .nav a:hover { color: var(--accent); }
+
+        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: 6px;
-            font-size: 0.95rem;
+            gap: 10px;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
             font-weight: 600;
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            color: #fff;
-            background: transparent;
             cursor: pointer;
-            font-family: inherit;
-            transition: background 0.15s ease, border-color 0.15s ease;
+            border: 1px solid var(--border-strong);
+            color: var(--text);
+            background: transparent;
+            transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
         }
 
-        .btn:hover, .btn:focus-visible { background: rgba(255, 255, 255, 0.12); border-color: #fff; }
+        .btn:hover { border-color: var(--accent); color: var(--text); }
+        .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+        .btn.primary:hover { background: #8ff0e6; border-color: #8ff0e6; color: var(--accent-ink); }
+        .btn.ghost { border-color: transparent; color: var(--body); padding-left: 14px; padding-right: 14px; font-weight: 500; }
+        .btn.ghost:hover { color: var(--accent); border-color: transparent; }
+        .btn.outline-accent { border-color: var(--accent); color: var(--accent); background: rgba(79, 209, 197, 0.08); padding: 12px 20px; }
+        .btn.outline-accent:hover { background: rgba(79, 209, 197, 0.16); color: var(--accent); }
+        .btn.small { padding: 7px 14px; font-size: 13px; border-radius: 6px; }
 
-        .btn.primary { background: #fff; color: var(--accent-dark); border-color: #fff; }
-        .btn.primary:hover, .btn.primary:focus-visible { background: #e6eefb; }
+        .btn svg { flex: none; }
 
-        .copy-btn { padding: 10px 14px; font-weight: 500; }
+        /* Hero */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            align-items: center;
+            padding-top: 72px;
+            padding-bottom: 80px;
+        }
 
-        /* Sections */
-        main.container { padding-top: 56px; padding-bottom: 24px; }
+        .hero-copy { flex: 1 1 460px; min-width: 0; }
 
-        section { margin-bottom: 56px; }
-
-        h2 {
-            font-size: 1.5rem;
+        h1 {
+            margin-top: 16px;
+            font-size: clamp(2.3rem, 5vw, 3.5rem);
+            line-height: 1.08;
             font-weight: 700;
-            color: var(--accent-dark);
-            padding-bottom: 12px;
-            margin-bottom: 28px;
-            border-bottom: 2px solid var(--accent);
-            display: inline-block;
+            letter-spacing: -0.02em;
         }
 
-        .project {
+        .hero-copy p { margin-top: 24px; font-size: 18px; line-height: 1.65; color: var(--body); max-width: 540px; }
+
+        .hero-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+        .social { margin-top: 20px; display: flex; gap: 24px; font-size: 15px; font-weight: 500; }
+        .social a { color: var(--body); text-decoration: none; }
+        .social a:hover { color: var(--accent); }
+
+        .terminal {
+            flex: 1 1 380px;
+            min-width: 0;
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 32px;
-            margin-bottom: 28px;
-            box-shadow: 0 1px 2px rgba(15, 42, 74, 0.04);
-        }
-
-        .project-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .project h3 {
-            font-size: 1.3rem;
-            color: var(--accent-dark);
-            line-height: 1.3;
-        }
-
-        .project-links { display: flex; gap: 10px; flex-wrap: wrap; }
-
-        .link-btn {
-            display: inline-block;
-            padding: 7px 14px;
-            border: 1px solid var(--accent);
-            border-radius: 6px;
-            color: var(--accent);
-            font-size: 0.88rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background 0.15s ease, color 0.15s ease;
-        }
-
-        .link-btn:hover, .link-btn:focus-visible { background: var(--accent); color: #fff; }
-
-        .project p { margin-top: 14px; color: #364154; }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 18px;
-            list-style: none;
-        }
-
-        .tags li {
-            background: var(--accent-soft);
-            color: var(--accent-dark);
-            padding: 4px 12px;
-            border-radius: 999px;
-            font-size: 0.82rem;
-            font-weight: 600;
-        }
-
-        .figure { margin-top: 24px; }
-
-        .figure img, .figure svg {
-            display: block;
-            width: 100%;
-            height: auto;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: #fff;
-        }
-
-        figcaption {
-            margin-top: 8px;
-            font-size: 0.85rem;
-            color: var(--muted);
-        }
-
-        /* Embedded site */
-        .browser {
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            background: #fff;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
         }
 
-        .browser-bar {
+        .terminal-bar {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 8px 14px;
-            background: #eef2f8;
+            gap: 8px;
+            padding: 12px 16px;
             border-bottom: 1px solid var(--border);
-            font-size: 0.82rem;
+            background: var(--surface-2);
+            font-family: var(--mono);
+            font-size: 12px;
             color: var(--muted);
         }
 
-        .browser-bar a { font-weight: 600; text-decoration: none; white-space: nowrap; }
-        .browser-bar a:hover { text-decoration: underline; }
-        .browser-bar span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .terminal-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong); display: inline-block; }
+        .terminal-bar span { margin-left: 8px; }
 
-        .browser-view {
-            display: block;
-            height: 560px;
-            overflow-y: auto;
-            border: 0;
+        .terminal pre {
+            padding: 22px 24px;
+            font-family: var(--mono);
+            font-size: 14px;
+            line-height: 1.9;
+            color: var(--text-soft);
+            overflow-x: auto;
         }
 
-        .browser .browser-view img { border: 0; border-radius: 0; }
+        .terminal .k { color: var(--accent); }
+        .terminal .dim { color: var(--muted); }
 
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+        .cursor { display: inline-block; width: 9px; height: 17px; background: var(--accent); vertical-align: text-bottom; animation: blink 1.1s steps(1) infinite; }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Sections */
+        section { padding-top: 24px; padding-bottom: 24px; }
+
+        .section-head {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 32px;
         }
 
-        .skill-group {
+        h2 { margin-top: 10px; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
+
+        .card {
             background: var(--surface);
             border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+        }
+
+        .card h3 { font-size: 21px; font-weight: 700; line-height: 1.3; }
+        .card .sub { font-size: 14px; color: var(--muted); margin-top: 4px; }
+        .card p.desc { margin-top: 14px; font-size: 15px; line-height: 1.7; color: var(--body); }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin-top: 18px; }
+
+        .tags li {
+            font-family: var(--mono);
+            font-size: 12.5px;
+            padding: 5px 11px;
+            border: 1px solid var(--border-strong);
+            border-radius: 6px;
+            color: var(--text-soft);
+        }
+
+        /* Featured project */
+        .featured {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .featured-copy { flex: 1 1 340px; min-width: 0; }
+        .featured-visual { flex: 1 1 440px; min-width: 0; }
+
+        .badge {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-ink);
+            background: var(--accent);
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        .featured h3 { margin-top: 18px; font-size: 26px; }
+
+        /* Framed visual */
+        .frame {
+            border: 1px solid var(--border);
             border-radius: 10px;
+            overflow: hidden;
+            background: var(--bg);
+        }
+
+        .frame-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 46px;
+            padding: 8px 14px;
+            background: var(--surface-2);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .frame-bar .path { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+        .frame-bar .actions { display: flex; gap: 8px; }
+
+        .frame-scroll { display: block; height: 340px; overflow-y: auto; background: #fff; }
+        .frame-scroll img { display: block; width: 100%; height: auto; }
+
+        .caption {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 12.5px;
+            color: var(--accent);
+        }
+
+        /* Project grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+            gap: 24px;
+        }
+
+        .grid .card { display: flex; flex-direction: column; }
+
+        .grid .frame { margin-top: 18px; }
+
+        .flow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            padding: 22px 14px;
+            min-height: 110px;
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--text-soft);
+            background: linear-gradient(180deg, #0d1522, var(--bg));
+        }
+
+        .flow span.node { padding: 5px 10px; border: 1px solid var(--border-strong); border-radius: 5px; background: var(--bg); }
+        .flow span.node.end { border-color: var(--accent); color: var(--accent); }
+        .flow span.arrow { color: var(--accent); }
+
+        .grid .caption-soft { margin-top: 10px; text-align: center; font-size: 12.5px; color: var(--muted); }
+
+        .grid .tags { margin-top: 16px; }
+        .grid .tags li { font-size: 12px; padding: 4px 9px; }
+
+        /* Skills */
+        .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px; }
+
+        .skill {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
             padding: 24px;
         }
 
-        .skill-group h3 {
-            font-size: 1rem;
-            color: var(--accent-dark);
-            margin-bottom: 12px;
+        .skill.lead { border-color: var(--accent); }
+
+        .skill h3 { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--accent); margin-bottom: 14px; }
+
+        .skill ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+
+        .skill li {
+            font-size: 14px;
+            color: var(--text-soft);
+            padding: 5px 11px;
+            background: var(--chip);
+            border-radius: 6px;
         }
 
-        .skill-group ul { list-style: none; }
+        .back { margin-top: 28px; }
+        .back a { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; font-weight: 500; text-decoration: none; }
+        .back a:hover { color: var(--accent); }
 
-        .skill-group li {
-            padding: 5px 0;
-            color: #364154;
-            font-size: 0.95rem;
-            border-top: 1px solid var(--border);
+        /* Contact */
+        .contact-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px;
         }
 
-        .skill-group li:first-child { border-top: 0; }
+        .contact-card h2 { margin-top: 0; font-size: 28px; }
+        .contact-card p { margin-top: 10px; font-size: 16px; color: var(--body); }
+        .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 32px 0 48px;
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.9rem;
+        footer { padding: 32px 0 56px; text-align: center; font-size: 13px; color: var(--muted); }
+
+        /* Floating jump button */
+        .float-jump {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 30;
+            opacity: 0;
+            transform: translateY(12px);
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            background: var(--surface-2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        footer a { text-decoration: none; font-weight: 600; }
-        footer a:hover { text-decoration: underline; }
+        .float-jump.visible { opacity: 1; transform: none; pointer-events: auto; }
 
-        :focus-visible { outline: 3px solid #7fa8ea; outline-offset: 2px; }
+        :focus-visible { outline: 3px solid #8ff0e6; outline-offset: 2px; }
 
         @media (max-width: 640px) {
-            header { padding: 48px 0 40px; }
-            h1 { font-size: 2rem; }
-            .project { padding: 22px; }
-            .browser-view { height: 420px; }
-            .browser-bar span { display: none; }
+            .wrap { padding: 0 20px; }
+            .hero { padding-top: 48px; padding-bottom: 56px; gap: 32px; }
+            .featured, .card { padding: 22px; }
+            .contact-card { padding: 28px 22px; }
+            .frame-scroll { height: 300px; }
+            .terminal pre { font-size: 12px; padding: 20px; }
+            h2 { font-size: 28px; }
+            .float-jump { right: 16px; bottom: 16px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
-            * { transition: none !important; }
+            * { transition: none !important; animation: none !important; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Arun Ramana Balasubramaniam</h1>
-            <p class="role">Computer Science Graduate Student, Boston University</p>
-            <p class="summary">
-                I build software across LLM applications, machine learning, blockchain and engineering simulation.
-                My work includes an electric motor design platform transferred to ZOHO for production use,
-                and I am focused on applied AI and agentic systems.
-            </p>
-            <div class="contact">
-                <a class="btn primary" href="mailto:arunr@bu.edu" aria-label="Send an email to arunr@bu.edu">arunr@bu.edu</a>
-                <button class="btn copy-btn" type="button" id="copy-email" aria-label="Copy email address">Copy</button>
-                <a class="btn" href="https://github.com/arunramana" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a class="btn" href="https://www.linkedin.com/in/arun-ramana-bba507148/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
+    <header class="topbar">
+        <div class="wrap">
+            <div class="brand">arun.ramana</div>
+            <nav class="nav" aria-label="Primary">
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
     </header>
 
-    <main class="container">
-        <section id="projects">
-            <h2>Projects</h2>
-
-            <article class="project" id="motor-design">
-                <div class="project-top">
-                    <h3>Electric Motor Design Tool</h3>
-                    <div class="project-links">
-                        <a class="link-btn" href="https://www.pilabz.in/picads/" target="_blank" rel="noopener noreferrer">Live Site</a>
-                        <a class="link-btn" href="https://github.com/arunramana/motor_design_tool" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    </div>
-                </div>
+    <main>
+        <div class="wrap hero">
+            <div class="hero-copy">
+                <div class="eyebrow">Computer Science, Boston University</div>
+                <h1>Arun Ramana Balasubramaniam</h1>
                 <p>
-                    Developed a comprehensive motor design tool using FEMM and Python, hosted on AWS, that enables
-                    custom motor solutions tailored to any given electric vehicle. Successfully transferred to ZOHO
-                    for production use, where it runs as Pi-CADS Motor.
+                    I build software across LLM applications, machine learning, blockchain and engineering simulation.
+                    My electric motor design platform was transferred to ZOHO for production use.
                 </p>
-                <ul class="tags">
-                    <li>Python</li>
-                    <li>FEMM</li>
-                    <li>AWS</li>
-                    <li>Electromagnetic Simulation</li>
-                </ul>
+                <div class="hero-actions">
+                    <a class="btn primary" href="mailto:arunr@bu.edu" aria-label="Send an email to arunr@bu.edu">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                        arunr@bu.edu
+                    </a>
+                    <button class="btn copy-email" type="button" aria-label="Copy email address">Copy</button>
+                    <a class="btn" href="#projects">View projects</a>
+                </div>
+                <div class="social">
+                    <a href="https://github.com/arunramana" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/arun-ramana-bba507148/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+            <div class="terminal" aria-label="Profile summary">
+                <div class="terminal-bar"><i></i><i></i><i></i><span>profile.py</span></div>
+<pre><span class="dim">$</span> python profile.py
+<span class="k">role</span>    = "CS graduate student"
+<span class="k">focus</span>   = ["LLM apps", "agentic AI", "ML"]
+<span class="k">built</span>   = ["motor design tool", "dApp"]
+<span class="k">shipped</span> = "ZOHO production"
+<span class="k">reach</span>   = "taught in 3 countries"
+<span class="dim">&gt;&gt;&gt;</span> <span class="cursor"></span></pre>
+            </div>
+        </div>
 
-                <div class="figure">
-                    <div class="browser">
-                        <div class="browser-bar">
-                            <span>www.pilabz.in/picads</span>
-                            <a href="https://www.pilabz.in/picads/" target="_blank" rel="noopener noreferrer">Visit the live site</a>
+        <section class="wrap" id="projects">
+            <div class="section-head">
+                <div>
+                    <div class="eyebrow">01 / Selected work</div>
+                    <h2>Projects</h2>
+                </div>
+                <a class="btn outline-accent" href="#skills">
+                    Jump to technical skills
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                </a>
+            </div>
+
+            <article class="card featured" id="motor-design">
+                <div class="featured-copy">
+                    <span class="badge">Featured / In production at ZOHO</span>
+                    <h3>Electric Motor Design Tool</h3>
+                    <p class="desc">
+                        A motor design tool built with FEMM and Python, hosted on AWS, that produces custom motor
+                        solutions for any given electric vehicle. Transferred to ZOHO, where it runs as Pi-CADS Motor.
+                    </p>
+                    <ul class="tags">
+                        <li>Python</li>
+                        <li>FEMM</li>
+                        <li>AWS</li>
+                        <li>Electromagnetic simulation</li>
+                    </ul>
+                </div>
+                <div class="featured-visual">
+                    <div class="frame">
+                        <div class="frame-bar">
+                            <span class="path">www.pilabz.in/picads</span>
+                            <span class="actions">
+                                <a class="btn small" href="https://github.com/arunramana/motor_design_tool" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <a class="btn small primary" href="https://www.pilabz.in/picads/" target="_blank" rel="noopener noreferrer">Open live site</a>
+                            </span>
                         </div>
-                        <a class="browser-view" href="https://www.pilabz.in/picads/" target="_blank" rel="noopener noreferrer" aria-label="Open the live Pi-CADS Motor website in a new tab">
+                        <a class="frame-scroll" href="https://www.pilabz.in/picads/" target="_blank" rel="noopener noreferrer" aria-label="Open the live Pi-CADS Motor website in a new tab">
                             <img src="assets/picads-site.webp" width="1100" height="3017" loading="lazy" alt="Pi-CADS Motor product page: hero, feature sections and what makes the tool unique">
                         </a>
                     </div>
-                    <figcaption>Pi-CADS Motor product page (scroll to browse, select to open the live site).</figcaption>
-                </div>
-            </article>
-
-            <article class="project" id="safestake">
-                <div class="project-top">
-                    <h3>SafeStake: Decentralized Crowdfunding Platform</h3>
-                    <div class="project-links">
-                        <a class="link-btn" href="https://github.com/arunramana/cs595Project" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a class="link-btn" href="https://github.com/arunramana/cs595Project/blob/main/README.md" target="_blank" rel="noopener noreferrer">Documentation</a>
+                    <div class="caption">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                        scroll to browse
                     </div>
                 </div>
-                <p>
-                    A decentralized crowdfunding platform built on Ethereum that enables secure, milestone-based project
-                    funding with transparent governance. Implements smart contract-based escrow, decentralized milestone
-                    approval through random jury selection (Chainlink VRF), and automated fund release. Features factory
-                    pattern deployment of project-specific ERC-20 tokens, IPFS integration for decentralized document
-                    storage, and OpenZeppelin Governor contracts for secure governance.
-                </p>
-                <ul class="tags">
-                    <li>Solidity</li>
-                    <li>React</li>
-                    <li>Ethereum</li>
-                    <li>Chainlink VRF</li>
-                    <li>IPFS</li>
-                    <li>OpenZeppelin</li>
-                    <li>ethers.js</li>
-                    <li>MetaMask</li>
-                </ul>
-                <figure class="figure">
-                    <img src="assets/safestake-architecture.svg" width="1000" height="320" loading="lazy" alt="SafeStake flow: backers fund an escrow contract, a creator submits a milestone, a Chainlink VRF selected jury and a governance vote approve it, and funds are released automatically">
-                    <figcaption>SafeStake milestone-based funding flow and supporting components.</figcaption>
-                </figure>
             </article>
 
-            <article class="project" id="spark-ml">
-                <div class="project-top">
-                    <h3>Spark ML: Massachusetts Voter Table Language Predictor</h3>
-                </div>
-                <p>
-                    Built a Spark ML pipeline to predict voter language preferences from survey data, with feature
-                    engineering and model validation.
-                </p>
-                <ul class="tags">
-                    <li>Spark ML</li>
-                    <li>Python</li>
-                    <li>Machine Learning</li>
-                </ul>
-                <figure class="figure">
-                    <img src="assets/sparkml-pipeline.svg" width="1000" height="200" loading="lazy" alt="Pipeline from survey data through feature engineering, model training and validation to voter language prediction">
-                    <figcaption>Prediction pipeline from survey data to language preference.</figcaption>
-                </figure>
-            </article>
+            <div class="grid">
+                <article class="card" id="safestake">
+                    <h3>SafeStake</h3>
+                    <div class="sub">Decentralized crowdfunding platform</div>
+                    <p class="desc">
+                        Milestone-based funding on Ethereum with smart contract escrow, Chainlink VRF jury selection,
+                        OpenZeppelin Governor governance, factory-deployed ERC-20 project tokens and IPFS document storage.
+                    </p>
+                    <div class="frame">
+                        <div class="frame-bar">
+                            <span class="path">safestake / funding flow</span>
+                            <span class="actions">
+                                <a class="btn small" href="https://github.com/arunramana/cs595Project" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <a class="btn small" href="https://github.com/arunramana/cs595Project/blob/main/README.md" target="_blank" rel="noopener noreferrer">Documentation</a>
+                            </span>
+                        </div>
+                        <div class="flow" role="img" aria-label="Funding flow: backers fund an escrow contract, a creator submits a milestone, a Chainlink VRF jury votes, and funds are released">
+                            <span class="node">Backers</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                            <span class="node">Escrow</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                            <span class="node">Milestone</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                            <span class="node">VRF jury</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                            <span class="node">Vote</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                            <span class="node end">Release</span>
+                        </div>
+                    </div>
+                    <div class="caption-soft">Milestone-based funding flow</div>
+                    <ul class="tags">
+                        <li>Solidity</li>
+                        <li>React</li>
+                        <li>Ethereum</li>
+                        <li>Chainlink VRF</li>
+                        <li>IPFS</li>
+                        <li>OpenZeppelin</li>
+                        <li>ethers.js</li>
+                        <li>MetaMask</li>
+                    </ul>
+                </article>
 
-            <article class="project" id="pals">
-                <div class="project-top">
+                <article class="card" id="spark-ml">
+                    <h3>Spark ML</h3>
+                    <div class="sub">Massachusetts voter table language predictor</div>
+                    <p class="desc">
+                        A Spark ML pipeline that predicts voter language preferences from survey data, with feature
+                        engineering and model validation.
+                    </p>
+                    <div class="frame">
+                        <div class="frame-bar"><span class="path">sparkml / pipeline</span></div>
+                        <div class="flow" role="img" aria-label="Pipeline: survey data, features, training, validation, prediction">
+                            <span class="node">Survey data</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                            <span class="node">Features</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                            <span class="node">Training</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                            <span class="node">Validation</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                            <span class="node end">Prediction</span>
+                        </div>
+                    </div>
+                    <div class="caption-soft">Prediction pipeline</div>
+                    <ul class="tags">
+                        <li>Spark ML</li>
+                        <li>Python</li>
+                        <li>Machine learning</li>
+                    </ul>
+                </article>
+
+                <article class="card" id="pals">
                     <h3>PALS Motor Design Course</h3>
-                </div>
-                <p>
-                    Designed and taught an online motor design course to engineering students across India, Bangladesh
-                    and Nepal.
-                </p>
-                <ul class="tags">
-                    <li>Motor Design</li>
-                    <li>Curriculum Design</li>
-                    <li>Online Teaching</li>
-                </ul>
-                <figure class="figure">
-                    <img src="assets/pals-course.svg" width="1000" height="300" loading="lazy" alt="The PALS Motor Design Course delivered online to engineering students in India, Bangladesh and Nepal">
-                    <figcaption>Online course delivery across three countries.</figcaption>
-                </figure>
-            </article>
-
-            <article class="project" id="dcaf">
-                <div class="project-top">
-                    <h3>DCAF Chrome Extension</h3>
-                    <div class="project-links">
-                        <a class="link-btn" href="https://github.com/arunramana/DCAF_extension" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <div class="sub">Online teaching</div>
+                    <p class="desc">
+                        Designed and taught an online motor design course to engineering students across India,
+                        Bangladesh and Nepal.
+                    </p>
+                    <div class="frame">
+                        <div class="frame-bar"><span class="path">pals / course reach</span></div>
+                        <div class="flow" role="img" aria-label="An online course delivered to students in India, Bangladesh and Nepal">
+                            <span class="node end">Online course</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                            <span class="node">India</span>
+                            <span class="node">Bangladesh</span>
+                            <span class="node">Nepal</span>
+                        </div>
                     </div>
-                </div>
-                <p>
-                    Developed a Chrome extension using the Gemini API to verify that website visits align with the
-                    user's stated browsing intent.
-                </p>
-                <ul class="tags">
-                    <li>JavaScript</li>
-                    <li>Chrome Extensions</li>
-                    <li>Gemini API</li>
-                    <li>LLM Applications</li>
-                </ul>
-                <figure class="figure">
-                    <img src="assets/dcaf-flow.svg" width="1000" height="280" loading="lazy" alt="The extension sends the stated intent and visited page to the Gemini API, which returns an aligned or not aligned verdict">
-                    <figcaption>Intent verification flow.</figcaption>
-                </figure>
-            </article>
+                    <div class="caption-soft">Delivered online in three countries</div>
+                    <ul class="tags">
+                        <li>Motor design</li>
+                        <li>Curriculum design</li>
+                        <li>Online teaching</li>
+                    </ul>
+                </article>
+
+                <article class="card" id="dcaf">
+                    <h3>DCAF Chrome Extension</h3>
+                    <div class="sub">Intent-aware browsing with the Gemini API</div>
+                    <p class="desc">
+                        A Chrome extension that uses the Gemini API to verify that website visits align with the
+                        user's stated browsing intent.
+                    </p>
+                    <div class="frame">
+                        <div class="frame-bar">
+                            <span class="path">dcaf / intent check</span>
+                            <span class="actions">
+                                <a class="btn small" href="https://github.com/arunramana/DCAF_extension" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </span>
+                        </div>
+                        <div class="flow" role="img" aria-label="The stated intent and visited page go to the Gemini API, which returns whether the visit is aligned">
+                            <span class="node">Intent + page</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                            <span class="node">Gemini API</span><span class="arrow" aria-hidden="true">&rarr;</span>
+                            <span class="node end">Aligned or not</span>
+                        </div>
+                    </div>
+                    <div class="caption-soft">Intent verification flow</div>
+                    <ul class="tags">
+                        <li>JavaScript</li>
+                        <li>Chrome extensions</li>
+                        <li>Gemini API</li>
+                        <li>LLM applications</li>
+                    </ul>
+                </article>
+            </div>
         </section>
 
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-group">
-                    <h3>AI and Machine Learning</h3>
+        <section class="wrap" id="skills" style="padding-top:72px">
+            <div class="eyebrow">02 / Toolbox</div>
+            <h2 style="margin-bottom:32px">Technical skills</h2>
+            <div class="skills">
+                <div class="skill lead">
+                    <h3>ai_ml/</h3>
                     <ul>
-                        <li>LLM applications and prompt engineering</li>
-                        <li>Agentic AI systems</li>
-                        <li>Retrieval-augmented generation (RAG)</li>
+                        <li>LLM applications</li>
+                        <li>Agentic AI</li>
+                        <li>RAG</li>
+                        <li>Prompt engineering</li>
                         <li>Gemini API</li>
-                        <li>Spark ML, TensorFlow, Keras</li>
+                        <li>Spark ML</li>
+                        <li>TensorFlow, Keras</li>
                     </ul>
                 </div>
-                <div class="skill-group">
-                    <h3>Languages</h3>
+                <div class="skill">
+                    <h3>languages/</h3>
                     <ul>
                         <li>Python</li>
                         <li>JavaScript</li>
@@ -450,17 +646,17 @@
                         <li>Solidity</li>
                     </ul>
                 </div>
-                <div class="skill-group">
-                    <h3>Web and Backend</h3>
+                <div class="skill">
+                    <h3>web_backend/</h3>
                     <ul>
-                        <li>React, MERN stack</li>
+                        <li>React, MERN</li>
                         <li>Django</li>
                         <li>REST APIs</li>
-                        <li>Chrome Extensions</li>
+                        <li>Chrome extensions</li>
                     </ul>
                 </div>
-                <div class="skill-group">
-                    <h3>Data and Cloud</h3>
+                <div class="skill">
+                    <h3>data_cloud/</h3>
                     <ul>
                         <li>Pandas, NumPy</li>
                         <li>MySQL, MongoDB</li>
@@ -468,53 +664,87 @@
                         <li>Docker, Linux, Git</li>
                     </ul>
                 </div>
-                <div class="skill-group">
-                    <h3>Blockchain</h3>
+                <div class="skill">
+                    <h3>blockchain/</h3>
                     <ul>
-                        <li>Smart contracts, Ethereum</li>
-                        <li>OpenZeppelin, Chainlink VRF</li>
-                        <li>IPFS</li>
-                        <li>ethers.js, DApp development</li>
+                        <li>Smart contracts</li>
+                        <li>Ethereum</li>
+                        <li>OpenZeppelin</li>
+                        <li>Chainlink VRF</li>
+                        <li>IPFS, ethers.js</li>
                     </ul>
                 </div>
-                <div class="skill-group">
-                    <h3>Simulation and Engineering</h3>
+                <div class="skill">
+                    <h3>simulation/</h3>
                     <ul>
-                        <li>FEMM, electromagnetic simulation</li>
+                        <li>FEMM</li>
+                        <li>Electromagnetic simulation</li>
                         <li>Electric motor design</li>
-                        <li>Embedded systems (Arduino, Raspberry Pi)</li>
+                        <li>Arduino, Raspberry Pi</li>
                     </ul>
+                </div>
+            </div>
+            <div class="back">
+                <a href="#projects">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                    Back to projects
+                </a>
+            </div>
+        </section>
+
+        <section class="wrap" id="contact" style="padding-top:72px">
+            <div class="card contact-card">
+                <div>
+                    <h2>Let's talk</h2>
+                    <p>Open to conversations about AI, ML and software engineering roles.</p>
+                </div>
+                <div class="contact-actions">
+                    <a class="btn primary" href="mailto:arunr@bu.edu">arunr@bu.edu</a>
+                    <button class="btn copy-email" type="button" aria-label="Copy email address">Copy email</button>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>Contact: <a href="mailto:arunr@bu.edu">arunr@bu.edu</a></p>
-            <p>&copy; 2026 Arun Ramana Balasubramaniam</p>
-        </div>
+        <div class="wrap">&copy; 2026 Arun Ramana Balasubramaniam</div>
     </footer>
+
+    <a class="btn outline-accent small float-jump" id="float-jump" href="#skills" aria-label="Jump to technical skills">
+        Technical skills
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
 
     <script>
         (function () {
-            var btn = document.getElementById('copy-email');
             var email = 'arunr@bu.edu';
-            function done(ok) {
-                btn.textContent = ok ? 'Copied' : 'Press Ctrl+C';
-                setTimeout(function () { btn.textContent = 'Copy'; }, 1800);
-            }
-            btn.addEventListener('click', function () {
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(email).then(function () { done(true); }, function () { done(false); });
-                } else {
-                    var t = document.createElement('textarea');
-                    t.value = email; document.body.appendChild(t); t.select();
-                    var ok = false;
-                    try { ok = document.execCommand('copy'); } catch (e) {}
-                    document.body.removeChild(t); done(ok);
+
+            document.querySelectorAll('.copy-email').forEach(function (btn) {
+                var label = btn.textContent;
+                function done(ok) {
+                    btn.textContent = ok ? 'Copied' : 'Press Ctrl+C';
+                    setTimeout(function () { btn.textContent = label; }, 1800);
                 }
+                btn.addEventListener('click', function () {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(email).then(function () { done(true); }, function () { done(false); });
+                    } else {
+                        var t = document.createElement('textarea');
+                        t.value = email; document.body.appendChild(t); t.select();
+                        var ok = false;
+                        try { ok = document.execCommand('copy'); } catch (e) {}
+                        document.body.removeChild(t); done(ok);
+                    }
+                });
             });
+
+            var jump = document.getElementById('float-jump');
+            var projects = document.getElementById('projects');
+            if (jump && projects && 'IntersectionObserver' in window) {
+                new IntersectionObserver(function (entries) {
+                    jump.classList.toggle('visible', entries[0].isIntersecting);
+                }, { rootMargin: '-45% 0px -45% 0px' }).observe(projects);
+            }
         })();
     </script>
 </body>
