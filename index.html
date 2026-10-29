@@ -321,6 +321,26 @@
         .featured + .featured { margin-top: 0; }
         .featured .caption-soft { margin-top: 10px; text-align: center; font-size: 12.5px; color: var(--muted); }
 
+        .video-card { padding: 32px; margin-bottom: 24px; }
+        .video-card .badge { margin-bottom: 0; }
+        .video-card h3 { margin-top: 18px; font-size: 28px; }
+
+        .video-frame { margin-top: 24px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
+        .player { position: relative; aspect-ratio: 16 / 9; background: #000; }
+        .player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+        .video-note { margin-top: 10px; text-align: center; font-size: 12.5px; color: var(--muted); }
+
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 28px; }
+        .stat { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+        .stat b { display: block; font-family: var(--mono); font-size: 30px; font-weight: 600; line-height: 1.2; color: var(--accent); }
+        .stat span { display: block; margin-top: 4px; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+
+        .video-body { display: flex; flex-wrap: wrap; gap: 8px 40px; margin-top: 8px; }
+        .video-body > div { flex: 1 1 340px; min-width: 0; }
+
+        .credit { margin-top: 20px; font-size: 12.5px; color: var(--muted); }
+
         .frame-image { display: block; background: #fff; }
         .frame-image img { display: block; width: 100%; height: auto; }
 
@@ -412,7 +432,9 @@
         @media (max-width: 640px) {
             .wrap { padding: 0 20px; }
             .hero { padding-top: 48px; padding-bottom: 56px; gap: 32px; }
-            .featured, .card { padding: 22px; }
+            .featured, .card, .video-card { padding: 22px; }
+            .video-card h3 { font-size: 23px; }
+            .stat b { font-size: 26px; }
             .contact-card { padding: 28px 22px; }
             .frame-scroll { height: 300px; }
             .terminal pre { font-size: 12px; padding: 20px; }
@@ -483,6 +505,71 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
                 </a>
             </div>
+
+            <article class="card video-card" id="fly-mario">
+                <span class="badge">Featured / Video demo</span>
+                <h3>A Fruit Fly's Brain Plays Super Mario Bros</h3>
+                <div class="sub">A real connectome wired to a game, with senses I invented and a web tool to explore it</div>
+
+                <div class="frame video-frame">
+                    <div class="frame-bar">
+                        <span class="path">fly_mario_fly / demo video</span>
+                        <span class="actions">
+                            <a class="btn small" href="https://github.com/arunramana/fly_mario_fly" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a class="btn small primary" href="https://www.youtube.com/watch?v=KbBN0ZwgkIc" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+                        </span>
+                    </div>
+                    <div class="player">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/KbBN0ZwgkIc?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;modestbranding=1"
+                            title="I put a real fruit fly's brain in charge of Super Mario Bros"
+                            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                            allowfullscreen
+                            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+                <div class="caption-soft video-note">Plays muted. Use the speaker icon in the player for sound.</div>
+
+                <div class="stats">
+                    <div class="stat"><b>636</b><span>real neurons, with their measured synapses and signs</span></div>
+                    <div class="stat"><b>10 / 10</b><span>test starts cleared on World 1-1</span></div>
+                    <div class="stat"><b>8</b><span>evolved dials, with the wiring left untouched</span></div>
+                </div>
+
+                <div class="video-body">
+                    <div>
+                        <p class="desc">
+                            The fly cannot see Mario, so I invented senses: cues computed from the game's memory, such
+                            as how large a Goomba looks or how close a mushroom smells, that feed real sensory neurons.
+                            Real motor and descending neurons then decide which buttons are pressed. The wiring comes
+                            from the MaleCNS v1.0 connectome, and the fly makes every decision.
+                        </p>
+                        <p class="desc">
+                            A web tool lets you attach senses to game objects, watch a run with the brain's activity
+                            beside the game, rewind to any moment and retry, while evolution tunes a few dials in the
+                            background.
+                        </p>
+                    </div>
+                    <div>
+                        <ul class="points">
+                            <li>Rules such as "never edit the wiring" and "never fire a neuron directly" are enforced in code by a validator, runtime guards and CI, not just written down.</li>
+                            <li>Full stack: Python simulation and CMA-ES evolution, a FastAPI server, a React and TypeScript web app, and an MCP server so AI clients can work with the fly.</li>
+                            <li>World 1-1 is solved. World 1-2 is not yet, and the README says so.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <ul class="tags">
+                    <li>Python</li>
+                    <li>Connectomics</li>
+                    <li>Evolutionary optimization</li>
+                    <li>FastAPI</li>
+                    <li>React</li>
+                    <li>TypeScript</li>
+                    <li>MCP</li>
+                </ul>
+                <div class="credit">Connectome: MaleCNS v1.0 by FlyEM (HHMI Janelia), the University of Cambridge, the MRC LMB and Google Research, licensed CC BY 4.0.</div>
+            </article>
 
             <article class="card featured" id="motor-design">
                 <div class="featured-copy">
