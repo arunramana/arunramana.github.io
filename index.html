@@ -329,6 +329,20 @@
         .player { position: relative; aspect-ratio: 16 / 9; background: #000; }
         .player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
+        .tabs { display: flex; gap: 4px; padding: 8px 12px 0; background: var(--surface-2); border-bottom: 1px solid var(--border); }
+        .tab {
+            font: 600 13px var(--sans); color: var(--muted); background: transparent; cursor: pointer;
+            border: 1px solid transparent; border-bottom: 0; border-radius: 6px 6px 0 0; padding: 7px 18px;
+            transition: color 0.15s ease, background 0.15s ease;
+        }
+        .tab:hover { color: var(--text); }
+        .tab[aria-selected="true"] { color: var(--accent); background: var(--bg); border-color: var(--border); }
+        .player.short iframe { inset: 0 auto 0 50%; width: auto; height: 100%; aspect-ratio: 9 / 16; transform: translateX(-50%); }
+        @media (max-width: 700px) {  /* on a phone the Short gets a tall panel of its own, so it is not a postage stamp */
+            .player.short { aspect-ratio: 9 / 16; }
+            .player.short iframe { inset: 0; width: 100%; aspect-ratio: auto; transform: none; }
+        }
+
         .video-note { margin-top: 10px; text-align: center; font-size: 12.5px; color: var(--muted); }
 
         .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 28px; }
@@ -516,13 +530,26 @@
                         <span class="path">fly_mario_fly / demo video</span>
                         <span class="actions">
                             <a class="btn small" href="https://github.com/arunramana/fly_mario_fly" target="_blank" rel="noopener noreferrer">GitHub</a>
-                            <a class="btn small primary" href="https://www.youtube.com/watch?v=KbBN0ZwgkIc" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+                            <a class="btn small primary" id="watch-link" href="https://www.youtube.com/watch?v=KbBN0ZwgkIc" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+                            <a class="btn small primary" href="https://arunramana.github.io/fly_mario_fly/#/scene" target="_blank" rel="noopener noreferrer">Try it yourself</a>
                         </span>
                     </div>
-                    <div class="player">
-                        <iframe
-                            src="https://www.youtube-nocookie.com/embed/KbBN0ZwgkIc?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;modestbranding=1"
+                    <div class="tabs" role="tablist" aria-label="Fly Mario Fly videos">
+                        <button type="button" class="tab" role="tab" id="tab-video" data-tab="video" aria-selected="true" aria-controls="panel-video">Video</button>
+                        <button type="button" class="tab" role="tab" id="tab-short" data-tab="short" aria-selected="false" aria-controls="panel-short" tabindex="-1">Short</button>
+                    </div>
+                    <div class="player" id="panel-video" role="tabpanel" aria-labelledby="tab-video">
+                        <iframe id="yt-video"
+                            src="https://www.youtube-nocookie.com/embed/KbBN0ZwgkIc?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;modestbranding=1&amp;enablejsapi=1"
                             title="I put a real fruit fly's brain in charge of Super Mario Bros"
+                            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                            allowfullscreen
+                            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                    <div class="player short" id="panel-short" role="tabpanel" aria-labelledby="tab-short" hidden>
+                        <iframe id="yt-short"
+                            data-src="https://www.youtube-nocookie.com/embed/lx6EpIwpQHg?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;modestbranding=1&amp;loop=1&amp;playlist=lx6EpIwpQHg&amp;enablejsapi=1"
+                            title="Fly Mario Fly, YouTube Short"
                             allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
                             allowfullscreen
                             referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -905,6 +932,46 @@
                     }
                 });
             });
+
+            var tabs = document.querySelectorAll('#fly-mario .tab');
+            if (tabs.length) {
+                var watch = document.getElementById('watch-link');
+                var links = { video: 'https://www.youtube.com/watch?v=KbBN0ZwgkIc', short: 'https://www.youtube.com/shorts/lx6EpIwpQHg' };
+                var tell = function (frame, command) {  // YouTube's player listens for these messages (enablejsapi=1)
+                    try {
+                        frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: command, args: [] }),
+                            'https://www.youtube-nocookie.com');
+                    } catch (e) {}
+                };
+                var select = function (name, focus) {
+                    var video = document.getElementById('yt-video'), short = document.getElementById('yt-short');
+                    tabs.forEach(function (t) {
+                        var on = t.dataset.tab === name;
+                        t.setAttribute('aria-selected', on ? 'true' : 'false');
+                        t.tabIndex = on ? 0 : -1;
+                        document.getElementById('panel-' + t.dataset.tab).hidden = !on;
+                        if (on && focus) t.focus();
+                    });
+                    if (name === 'short') {
+                        if (!short.getAttribute('src')) short.setAttribute('src', short.dataset.src);  // load it only when asked for
+                        else tell(short, 'playVideo');
+                        tell(video, 'pauseVideo');
+                    } else {
+                        tell(short, 'pauseVideo');
+                        tell(video, 'playVideo');
+                    }
+                    watch.href = links[name];
+                };
+                tabs.forEach(function (t, i) {
+                    t.addEventListener('click', function () { select(t.dataset.tab); });
+                    t.addEventListener('keydown', function (e) {
+                        var to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+                        if (to === undefined) return;
+                        e.preventDefault();
+                        select(tabs[(to + tabs.length) % tabs.length].dataset.tab, true);
+                    });
+                });
+            }
 
             var jump = document.getElementById('float-jump');
             var projects = document.getElementById('projects');
